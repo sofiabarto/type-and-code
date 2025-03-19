@@ -77,7 +77,7 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background("deepgray");
+  background("deeppink");
 
   // [INFO] Rimuovi il commento per disegnare il testo
   fill("white");
