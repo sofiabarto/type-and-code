@@ -80,7 +80,7 @@ export function sotto(disegnaTesto) {
   background("pink");
 
   // [INFO] Rimuovi il commento per disegnare il testo
-  fill("white");
+  fill("black");
   disegnaTesto();
 }
 
