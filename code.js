@@ -1,5 +1,5 @@
 export const configurazione = {
-  testo: "PAIN",
+  testo: "PEPI",
 
   dimensione: 0.8,
   interlinea: 0.7,
@@ -77,7 +77,7 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background("white");
+  background("red");
 
   // [INFO] Rimuovi il commento per disegnare il testo
   fill("black");
