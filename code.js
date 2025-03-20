@@ -2,8 +2,6 @@ export const configurazione = {
   //oggetto, lista di informazioni, variabili
   testo: "e",
 
-  let punti=[10]
-
   dimensione: 0.8,
   interlinea: 0.7,
   allineamento: "centro",
@@ -13,9 +11,6 @@ export const configurazione = {
   densitàPuntiBase: 1,
 
   nascondiInterfaccia: true,
-
-  let colore1,colore2;
-  
 };
 
 /**
@@ -36,42 +31,6 @@ export const configurazione = {
  *
  * @param {Ingredienti} ingredienti
  */
-
-function generaPunti() {
-  for (let i = 0; i < testo.length; i++) {
-      // Eseguiamo un ciclo su ogni carattere del testo per trovare i punti della lettera
-      // Supponiamo che le ellissi siano posizionate lungo una traiettoria orizzontale
-      for (let j = 0; j < 50; j++) {
-          let x = map(i + j, 0, testo.length * 50, 100, width - 100);
-          let y = map(j, 0, 50, 100, height - 100);
-          punti.push({ x: x, y: y });
-      }
-  }
-}
-
-function sfumaturaLuminosità() {
-  let gradienteX = (sin(frameCount * 0.01) + 1) / 2; // Sfumatura che si muove orizzontalmente
-  let gradienteY = (cos(frameCount * 0.01) + 1) / 2; // Sfumatura che si muove verticalmente
-
-  colore1 = color(255 * gradienteX, 0, 255 * (1 - gradienteY));  // Colore che cambia dinamicamente
-  colore2 = color(255 * (1 - gradienteX), 0, 255 * gradienteY);  // Colore che cambia dinamicamente
-// Creiamo un gradiente orizzontale che attraversa la tela
-for (let i = 0; i < width; i++) {
-  let inter = map(i, 0, width, 0, 1); // Interpolazione per il gradiente
-  let col = lerpColor(colore1, colore2, inter);
-  stroke(col);
-  line(i, 0, i, height); // Disegna la linea verticale per il gradiente
-}
-}
-  
-for (let i = 0; i < punti.length; i++) {
-  fill(255, 0, 0); // Colore rosso per le ellissi
-  noStroke();
-  ellipse(punti[i].x, punti[i].y, 10, 10); // Disegna un'ellisse
-}
-
-
-
 export function disegnaPunto({
   x,
   y,
@@ -83,8 +42,9 @@ export function disegnaPunto({
   alpha = 0,
   beta = 0,
   gamma = 0,
-}) 
-{}
+}) {
+  ellipse(x, y, 10);
+}
 
 /**
  * Carica le risorse necessarie
