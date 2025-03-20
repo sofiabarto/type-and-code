@@ -1,6 +1,6 @@
 export const configurazione = {
   //oggetto, lista di informazioni, variabili
-  testo: "",
+  testo: "e",
 
   dimensione: 0.8,
   interlinea: 0.7,
