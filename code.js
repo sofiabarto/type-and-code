@@ -43,7 +43,11 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  ellipse(x, y, 10);
+  // let larghezza = map(sin(indice * 10), -1, 1, 10, 20);
+  let larghezza = random(50, 100) * map(volume, 0, 1, 1, 65);
+  noStroke();
+  fill(random(0, 255), 0, random(0, 255));
+  rect(x, y, larghezza, 10);
 }
 
 /**
