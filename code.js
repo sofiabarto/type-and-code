@@ -2,6 +2,8 @@ export const configurazione = {
   //oggetto, lista di informazioni, variabili
   testo: "e",
 
+  let punti=[10]
+
   dimensione: 0.8,
   interlinea: 0.7,
   allineamento: "centro",
@@ -11,6 +13,9 @@ export const configurazione = {
   densitàPuntiBase: 1,
 
   nascondiInterfaccia: true,
+
+  let colore1,colore2;
+  
 };
 
 /**
@@ -31,7 +36,41 @@ export const configurazione = {
  *
  * @param {Ingredienti} ingredienti
  */
-let puntiPrecedenti = [];
+
+function generaPunti() {
+  for (let i = 0; i < testo.length; i++) {
+      // Eseguiamo un ciclo su ogni carattere del testo per trovare i punti della lettera
+      // Supponiamo che le ellissi siano posizionate lungo una traiettoria orizzontale
+      for (let j = 0; j < 50; j++) {
+          let x = map(i + j, 0, testo.length * 50, 100, width - 100);
+          let y = map(j, 0, 50, 100, height - 100);
+          punti.push({ x: x, y: y });
+      }
+  }
+}
+
+function sfumaturaLuminosità() {
+  let gradienteX = (sin(frameCount * 0.01) + 1) / 2; // Sfumatura che si muove orizzontalmente
+  let gradienteY = (cos(frameCount * 0.01) + 1) / 2; // Sfumatura che si muove verticalmente
+
+  colore1 = color(255 * gradienteX, 0, 255 * (1 - gradienteY));  // Colore che cambia dinamicamente
+  colore2 = color(255 * (1 - gradienteX), 0, 255 * gradienteY);  // Colore che cambia dinamicamente
+// Creiamo un gradiente orizzontale che attraversa la tela
+for (let i = 0; i < width; i++) {
+  let inter = map(i, 0, width, 0, 1); // Interpolazione per il gradiente
+  let col = lerpColor(colore1, colore2, inter);
+  stroke(col);
+  line(i, 0, i, height); // Disegna la linea verticale per il gradiente
+}
+}
+  
+for (let i = 0; i < punti.length; i++) {
+  fill(255, 0, 0); // Colore rosso per le ellissi
+  noStroke();
+  ellipse(punti[i].x, punti[i].y, 10, 10); // Disegna un'ellisse
+}
+
+
 
 export function disegnaPunto({
   x,
@@ -44,51 +83,8 @@ export function disegnaPunto({
   alpha = 0,
   beta = 0,
   gamma = 0,
-}) {
-  // let larghezza = map(volume, 0, 1, 10, 200);
-  // fill(255);
-  // ellipse(x, y, larghezza);
-  // }
-  // //   //effetto wireframe
-  // let raggio = map(sin(frameCount), -1, 1, unita, 2 * unita);
-  // //let raggio = map(volume, 0, 1, 5, 50); // Variazione delle curve in base al suono
-
-  // stroke(255, 50); // Linee bianche trasparenti per l'effetto wireframe
-  // stroke("red");
-  // strokeWeight(1);
-  // //noFill();
-
-  // // Memorizza i punti per creare le curve
-  // puntiPrecedenti.push({ x, y });
-
-  // // Se ci sono abbastanza punti, collega con curve Bezier
-  // if (puntiPrecedenti.length > 3) {
-  //   let p0 = puntiPrecedenti[puntiPrecedenti.length - 4];
-  //   let p1 = puntiPrecedenti[puntiPrecedenti.length - 3];
-  //   let p2 = puntiPrecedenti[puntiPrecedenti.length - 2];
-  //   let p3 = puntiPrecedenti[puntiPrecedenti.length - 1];
-
-  //   // Punti di controllo per la curva
-  //   let cx1 = p1.x + sin(frameCount * 0.05 + indice) * raggio;
-  //   let cy1 = p1.y + cos(frameCount * 0.05 + indice) * raggio;
-  //   let cx2 = p2.x + cos(frameCount * 0.05 + indice) * raggio;
-  //   let cy2 = p2.y + sin(frameCount * 0.05 + indice) * raggio;
-
-  //   bezier(p0.x, p0.y, cx1, cy1, cx2, cy2, p3.x, p3.y);
-  // }
-
-  // // Limita il numero di punti per non sovraccaricare
-  // if (puntiPrecedenti.length > 100) {
-  //   puntiPrecedenti.shift(); // Elimina il più vecchio
-  // }
-  // }
-  //effetto con ellissi
-  let larghezza = map(sin(frameCount + indice), -1, 1, unita, 2 * unita);
-  //let larghezza = map(volume, 0, 1, 10, 200);
-  fill("white");
-  //rect(x, y, larghezza, 2);
-  ellipse(x, y, larghezza);
-}
+}) 
+{}
 
 /**
  * Carica le risorse necessarie
