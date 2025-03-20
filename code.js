@@ -31,6 +31,8 @@ export const configurazione = {
  *
  * @param {Ingredienti} ingredienti
  */
+let puntiPrecedenti = [];
+
 export function disegnaPunto({
   x,
   y,
@@ -43,8 +45,51 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  ellipse(x, y, 10);
+  let larghezza = map(volume, 0, 1, 10, 200);
+  fill(255);
+  ellipse(x, y, larghezza);
 }
+// {
+// //   //effetto wireframe
+// let raggio = map(sin(frameCount), -1, 1, unita, 2 * unita);
+// //let raggio = map(volume, 0, 1, 5, 50); // Variazione delle curve in base al suono
+
+// stroke(255, 50); // Linee bianche trasparenti per l'effetto wireframe
+// stroke("red");
+// strokeWeight(1);
+// //noFill();
+
+// // Memorizza i punti per creare le curve
+// puntiPrecedenti.push({ x, y });
+
+// // Se ci sono abbastanza punti, collega con curve Bezier
+// if (puntiPrecedenti.length > 3) {
+//   let p0 = puntiPrecedenti[puntiPrecedenti.length - 4];
+//   let p1 = puntiPrecedenti[puntiPrecedenti.length - 3];
+//   let p2 = puntiPrecedenti[puntiPrecedenti.length - 2];
+//   let p3 = puntiPrecedenti[puntiPrecedenti.length - 1];
+
+//   // Punti di controllo per la curva
+//   let cx1 = p1.x + sin(frameCount * 0.05 + indice) * raggio;
+//   let cy1 = p1.y + cos(frameCount * 0.05 + indice) * raggio;
+//   let cx2 = p2.x + cos(frameCount * 0.05 + indice) * raggio;
+//   let cy2 = p2.y + sin(frameCount * 0.05 + indice) * raggio;
+
+//   bezier(p0.x, p0.y, cx1, cy1, cx2, cy2, p3.x, p3.y);
+// }
+
+// // Limita il numero di punti per non sovraccaricare
+// if (puntiPrecedenti.length > 100) {
+//   puntiPrecedenti.shift(); // Elimina il più vecchio
+// }
+// }
+//effetto con ellissi
+//   //let larghezza = map(sin(frameCount + indice), -1, 1, unita, 4 * unita);
+//   let larghezza = map(volume, 0, 1, 10, 200);
+//   fill("white");
+//   //rect(x, y, larghezza, 2);
+//   ellipse(x, y, larghezza);
+// }
 
 /**
  * Carica le risorse necessarie
