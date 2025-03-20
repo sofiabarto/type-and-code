@@ -1,6 +1,6 @@
 export const configurazione = {
   //oggetto, lista di informazioni, variabili
-  testo: "e",
+  testo: "",
 
   dimensione: 0.8,
   interlinea: 0.7,
@@ -44,9 +44,9 @@ export function disegnaPunto({
   gamma = 0,
 }) {
   // let larghezza = map(sin(indice * 10), -1, 1, 10, 20);
-  let larghezza = random(50, 100) * map(volume, 0, 1, 1, 65);
+  let larghezza = random(50, 100) * map(volume, 0, 1, 1, 45);
   noStroke();
-  fill(random(0, 255), 0, random(0, 255));
+  fill(random(0, 255), random(0, 225), random(0, 255));
   rect(x, y, larghezza, 10);
 }
 
