@@ -43,7 +43,14 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  ellipse(x, y, 10);
+  push();
+  translate(x, y);
+  // line(0, 0, 50, 0);
+  strokeWeight(5);
+  stroke("deeppink");
+  line(0, 0, alpha, 0);
+  pop();
+  // rect(x, y, 10, 10);
 }
 
 /**
@@ -70,7 +77,7 @@ export function sotto(disegnaTesto) {
   background("black");
 
   // [INFO] Rimuovi il commento per disegnare il testo
-  fill("pink");
+  fill("black");
   disegnaTesto();
 }
 
