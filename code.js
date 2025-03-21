@@ -71,11 +71,11 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background("black");
+  background("#00123C");
 
   // [INFO] Rimuovi il commento per disegnare il testo
-  fill("black");
-  disegnaTesto();
+  // fill("black");
+  // disegnaTesto();
 }
 
 /**
