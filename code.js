@@ -70,7 +70,7 @@ export function sotto(disegnaTesto) {
   background("black");
 
   // [INFO] Rimuovi il commento per disegnare il testo
-  fill("black");
+  fill("pink");
   disegnaTesto();
 }
 
