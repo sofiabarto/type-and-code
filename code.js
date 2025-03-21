@@ -48,7 +48,7 @@ export function disegnaPunto({
   // line(0, 0, 50, 0);
   strokeWeight(5);
   stroke("deeppink");
-  line(0, 0, alpha, 0);
+  line(0, 0, gamma, 0);
   pop();
   // rect(x, y, 10, 10);
 }
